@@ -1,0 +1,23 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.lanou.domain.Person">
+        <!-- 主键 -->
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <!-- 普通属性 -->
+        <property name="name"/>
+        <property name="password"/>
+        <!-- 关联关系 1对1 基于外键的
+            可以在任意一方维护外键, 维护外键的一方配置mary-to-one,
+            需要加unique唯一性的设置, 其中列名为idCard_id即为外键
+        -->
+        <many-to-one name="idCard" class="com.lanou.domain.IDCard" column="idCard_id"
+                cascade="all" update="true">
+        </many-to-one>
+    </class>
+
+</hibernate-mapping>
